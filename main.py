@@ -18,6 +18,7 @@ def main():
         screen.fill((0, 0, 0))
         a= newobj.tick(60)
         dt = a / 1000.0  # Convert milliseconds to seconds
+        player.update(dt)
         player.draw(screen)
         pygame.display.flip()
 if __name__ == "__main__":
