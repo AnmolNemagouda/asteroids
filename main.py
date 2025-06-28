@@ -7,6 +7,9 @@ def main():
     print("Starting Asteroids!")
     print("Screen width:",SCREEN_WIDTH)
     print("Screen height:",SCREEN_HEIGHT)
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     newobj = pygame.time.Clock()
     dt=60
@@ -18,8 +21,9 @@ def main():
         screen.fill((0, 0, 0))
         a= newobj.tick(60)
         dt = a / 1000.0  # Convert milliseconds to seconds
-        player.update(dt)
-        player.draw(screen)
+        updatable.update(dt)
+        for obj in drawable:
+            obj.draw(screen)
         pygame.display.flip()
 if __name__ == "__main__":
     main()
