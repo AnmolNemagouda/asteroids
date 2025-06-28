@@ -1,4 +1,5 @@
 import pygame
+import sys
 from constants import *
 from player import Player
 from circleshape import CircleShape
@@ -28,6 +29,10 @@ def main():
         a= newobj.tick(60)
         dt = a / 1000.0  # Convert milliseconds to seconds
         updatable.update(dt)
+        for obj in asteroidgroup:
+            if obj.is_colliding(player) == True:
+                print("Game Over!")
+                sys.exit()
         for obj in drawable:
             obj.draw(screen)
         pygame.display.flip()
