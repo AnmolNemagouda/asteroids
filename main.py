@@ -41,10 +41,10 @@ def main():
                 sys.exit()
         for obj in drawable:
             obj.draw(screen)
-        for obj in asteroidgroup:
+        for ast in asteroidgroup:
             for bullet in shotgroup:
-                if obj.is_colliding(bullet):
-                    obj.kill()
+                if ast.is_colliding(bullet):
+                    ast.split()
                     bullet.kill()
                     
         pygame.display.flip()
